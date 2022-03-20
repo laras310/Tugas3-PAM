@@ -22,7 +22,7 @@ function Result({navigation, route}) {
           {/* ikon panah */}
           <View style={[{marginTop:10}]}>
             <TouchableOpacity
-            onPress={() => navigation.goBack}>
+            onPress={() => navigation.goBack()}>
               <FontAwesome name="long-arrow-left" size={24} color="black" />
             </TouchableOpacity>
             
