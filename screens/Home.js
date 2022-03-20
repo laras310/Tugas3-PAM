@@ -9,6 +9,9 @@ import { Component } from 'react/cjs/react.production.min';
 
 function Home({navigation}) {
   console.log("aplikasi berjalan");
+  const [asal, onChangeAsal] = React.useState('');
+  const [tujuan, onChangeTujuan] = React.useState(null);
+  const [tanggal, onChangeTanggal] = React.useState(null);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -36,8 +39,9 @@ function Home({navigation}) {
           />
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
-            value={this.state.berangkat}
-            onChangeText={berangkat => this.setState({berangkat})}
+            value={asal}
+            
+            onChangeText={onChangeAsal}
             // value={number}
             placeholder="Masukan Lokasi Keberangkatan">
           </TextInput>
@@ -49,8 +53,8 @@ function Home({navigation}) {
           <MaterialCommunityIcons name="airplane-landing" size={24} color="black" style={styles.icon}/>
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
-            value={this.state.tujuan}
-            onChangeText={tujuan => this.setState({tujuan})}
+            onChangeText={onChangeTujuan}
+            value={tujuan}
             placeholder="Masukan Lokasi Tujuan">
           </TextInput>
         </View>
@@ -61,19 +65,18 @@ function Home({navigation}) {
           <FontAwesome name="calendar" size={24} color="black" style={styles.icon}/>
           <TextInput style={styles.input}
             underlineColorAndroid="transparent"
-            value={this.state.tanggal}
-            onChangeText={tanggal => this.setState({tanggal})}
+            onChangeText={onChangeTanggal}
+            value={tanggal}
             placeholder="Masukan Lokasi Tujuan">
           </TextInput>
         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('Result',{
-            Berangkat:this.state.berangkat,
-            Tujuan: this.state.tujuan,
-            Tanggal: this.state.tujuan
-          })}
-          
+          onPress={() => {navigation.navigate('Result',{
+            asal : asal,tujuan : tujuan,
+            tanggal: tanggal
+          });
+          }}
           style={styles.button}>
     
           <Text style={styles.btnText}>

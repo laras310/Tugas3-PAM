@@ -120,9 +120,9 @@ const styles = StyleSheet.create({
     },
     
     tanggal:{
-      fontSize:14,
+      fontSize:20,
       color:'blue',
-      marginTop:10,
+      marginTop:2,
       fontWeight:'bold'
     },
 
@@ -148,7 +148,9 @@ const styles = StyleSheet.create({
       shadowRadius: 4,
       elevation: 5,
     },
-    
+    h2:{
+      fontSize:18,
+    }
   });
 
   export default styles;

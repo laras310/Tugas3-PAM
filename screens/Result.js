@@ -1,18 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, Button, View, SafeAreaView, TextInput, TouchableOpacity} from 'react-native';
+import {Card, Text, View, SafeAreaView, FlatList, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import { Ionicons,MaterialIcons, AntDesign, MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons';
 import styles from '../style/global';
+import {Bandara, Maskapai, Jadwal} from '../data'
+// import  from 'react-native-elements';
 
 
 
-function Result({navigation}) {
+function Result({navigation, route}) {
   console.log("aplikasi berjalan");
-  const{navigation}=this.props;
-  const pergi=navigation.getParam('Berangkat')
-  const tuju = navigation.getParam('Tujuan')
-  const tgl=navigation.getParam('Tanggal')
-
+  const { asal } = route.params;
+  const { tujuan } = route.params;
+  const { tanggal } = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.bg2}>
@@ -41,34 +41,25 @@ function Result({navigation}) {
           Hasil Pencarian Penerbangan             
         </Text>
         <Text style={styles.subjudul}>
-              (Tanggal Keberangkatan)
+            {JSON.stringify(tanggal).replace(/"/g, '')}
             </Text>
       </View>
+
+      {/* <View>
+                    <CariData/>
+                </View> */}
       
       <View style={styles.area2}>
-        <Text>{JSON.stringify(pergi)}    -    {JSON.stringify(tuju)}</Text>
+        <Text style={[styles.h2]}>{JSON.stringify(asal).replace(/"/g, '')}    -    {JSON.stringify(tujuan).replace(/"/g, '')}</Text>
 
         <View style={styles.icnRslt} >
+          {/* ikon panah */}
           <View style={[{flexDirection: 'row'}]}>
             <MaterialIcons name="airplanemode-active" size={30} color="black" style={styles.icon}/>
             <Text style={[styles.result]}>Elang</Text>
           </View>
-          <Text style={[styles.tanggal]}>{JSON.stringify(tgl)}</Text>
+          <Text style={[styles.tanggal]}>{JSON.stringify(tanggal).replace(/"/g, '')}</Text>
         </View>          
-      </View>
-
-      <View style={styles.area2}>
-        <Text>(L. Keberangkatan)    -    (L. Tujuan)</Text>
-
-        <View style={styles.icnRslt} >
-          
-          <View style={[{flexDirection: 'row'}]}>
-            <MaterialIcons name="airplanemode-active" size={30} color="black" style={styles.icon}/>
-            <Text style={[styles.result]}>Elang</Text>
-          </View>
-          <Text style={[styles.tanggal]}>Tanggal Keberangkatan</Text>
-        </View>
-
       </View>
 
       <View style={styles.crcont} >
