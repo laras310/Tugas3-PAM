@@ -4,8 +4,6 @@ import React from 'react';
 import { Ionicons,MaterialIcons, AntDesign, MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons';
 import styles from '../style/global';
 import {Bandara, Maskapai, Jadwal} from '../data'
-// import  from 'react-native-elements';
-
 
 
 function Result({navigation, route}) {
@@ -13,6 +11,8 @@ function Result({navigation, route}) {
   const { asal } = route.params;
   const { tujuan } = route.params;
   const { tanggal } = route.params;
+
+  // const {berangkat}=Bandara.find(id =>id.bandara_nama.toLowerCase()===asal.toLowerCase() ).bandara_kode
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.bg2}>
@@ -22,7 +22,7 @@ function Result({navigation, route}) {
           {/* ikon panah */}
           <View style={[{marginTop:10}]}>
             <TouchableOpacity
-            onPress={() => navigation.navigate('Home')}>
+            onPress={() => navigation.goBack}>
               <FontAwesome name="long-arrow-left" size={24} color="black" />
             </TouchableOpacity>
             
@@ -44,11 +44,20 @@ function Result({navigation, route}) {
             {JSON.stringify(tanggal).replace(/"/g, '')}
             </Text>
       </View>
-
-      {/* <View>
-                    <CariData/>
-                </View> */}
       
+      <View style={styles.area2}>
+        <Text style={[styles.h2]}>{JSON.stringify(asal).replace(/"/g, '')}    -    {JSON.stringify(tujuan).replace(/"/g, '')}</Text>
+
+        <View style={styles.icnRslt} >
+          {/* ikon panah */}
+          <View style={[{flexDirection: 'row'}]}>
+            <MaterialIcons name="airplanemode-active" size={30} color="black" style={styles.icon}/>
+            <Text style={[styles.result]}>Elang</Text>
+          </View>
+          <Text style={[styles.tanggal]}>{JSON.stringify(tanggal).replace(/"/g, '')}</Text>
+        </View>          
+      </View>
+
       <View style={styles.area2}>
         <Text style={[styles.h2]}>{JSON.stringify(asal).replace(/"/g, '')}    -    {JSON.stringify(tujuan).replace(/"/g, '')}</Text>
 

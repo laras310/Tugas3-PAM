@@ -4,7 +4,6 @@ import React from 'react';
 import { Ionicons, AntDesign, MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import styles from '../style/global';
-import { Component } from 'react/cjs/react.production.min';
 
 
 function Home({navigation}) {
